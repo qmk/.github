@@ -5,7 +5,7 @@ body:
   attributes:
     label: Information
     options:
-    - label: "I'm sure that I do not need one of the other issue templates"
+    - label: "None of the other issue templates apply"
       required: true
 - type: textarea
   attributes:
