@@ -3,13 +3,11 @@ description: "If you're 100% sure that you do not need one of the other issue te
 body:
 - type: checkboxes
   attributes:
-    label: "I'm sure that I do not need one of the other issue templates"
     options:
-    - label: "I'm 100% sure"
+    - label: "I'm sure that I do not need one of the other issue templates"
       required: true
 - type: textarea
   attributes:
-    label: Current Behavior
-    description: A concise description of what you're experiencing.
+    label: Description
   validations:
     required: false
