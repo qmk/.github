@@ -1,0 +1,20 @@
+name: Feature Request
+description: Suggest a new feature or changes to existing features.
+title: "[Feature Request] "
+labels: [enhancement]
+body:
+- type: markdown
+  attributes:
+    value: |
+      Thanks for taking the time to fill out this feature request!
+      
+      Please provide a general summary of the changes you want in the title above.
+
+- type: textarea
+  attributes:
+    label: Description
+    description: |
+      A few sentences describing what it is that you'd like to see in QMK.
+      Additional information (such as links to spec sheets, licensing info, other related issues or PRs, etc) would be helpful.
+  validations:
+    required: true
