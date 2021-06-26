@@ -1,6 +1,5 @@
 name: Blank Issue
 description: "If you're 100% sure that you do not need one of the other issue templates, use this one instead."
-title: ''
 body:
 - type: checkboxes
   attributes:
