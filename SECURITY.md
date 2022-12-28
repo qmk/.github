@@ -2,4 +2,4 @@
 
 ## Reporting a Vulnerability
 
-TODO
+Please report (suspected) security vulnerabilities to hello@qmk.fm.
