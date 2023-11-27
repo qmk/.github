@@ -45,19 +45,6 @@ jobs:
           repository: ${{ inputs.qmk_repo || 'qmk/qmk_firmware' }}
           ref: ${{ inputs.qmk_ref || 'master' }}
           submodules: recursive
-          fetch-depth: 1000 # This line should be removed once userspace support exists in QMK Firmware
-
-      ########################################################
-      ## Delete this section once userspace exists upstream ##
-      ########################################################
-      - name: Patch QMK Firmware with userspace support
-        run: |
-          cd qmk_firmware
-          git config --global user.email "nonexistent@email-address.invalid"
-          git config --global user.name "QMK GitHub Actions User"
-          git remote add qmk https://github.com/qmk/qmk_firmware.git
-          git fetch qmk qmk-userspace
-          git merge --no-commit --squash qmk/qmk-userspace
 
       - name: Install QMK CLI
         run: |
