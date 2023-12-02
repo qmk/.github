@@ -57,6 +57,10 @@ jobs:
           qmk config user.qmk_home=$GITHUB_WORKSPACE/qmk_firmware
           qmk config user.overlay_dir=$GITHUB_WORKSPACE
 
+      - name: Validate userspace
+        run: |
+          qmk userspace-doctor
+
       - name: Build
         run: |
           qmk userspace-compile -e DUMP_CI_METADATA=yes || touch .failed
