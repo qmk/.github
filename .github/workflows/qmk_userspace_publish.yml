@@ -2,6 +2,12 @@ name: Build Binaries
 
 on:
   workflow_call:
+    inputs:
+      release_name:
+        description: "allow setting the release name"
+        default: "latest"
+        required: false
+        type: string
 
 permissions:
   contents: write
@@ -23,7 +29,7 @@ jobs:
         with:
           token: ${{ github.token }}
           name: Latest QMK Firmware
-          tag_name: latest
+          tag_name: ${{ inputs.release_name || 'latest' }}
           fail_on_unmatched_files: false
           draft: false
           prerelease: false
