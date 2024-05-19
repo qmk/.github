@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Checkout Userspace
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ github.token }}
           submodules: recursive
@@ -37,7 +37,7 @@ jobs:
           files: qmk_firmware
 
       - name: Checkout QMK Firmware
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         if: steps.check_files.outputs.files_exists == 'false'
         with:
           token: ${{ github.token }}
