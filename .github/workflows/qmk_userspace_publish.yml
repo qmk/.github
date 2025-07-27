@@ -25,6 +25,11 @@ jobs:
         with:
           name: Firmware
 
+      - name: Delete release
+        run: gh release delete ${{ inputs.release_name || 'latest' }} --cleanup-tag || true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+
       - name: Generate Release
         uses: softprops/action-gh-release@v2
         if: always() && !cancelled()
