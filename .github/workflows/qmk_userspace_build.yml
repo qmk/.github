@@ -51,6 +51,12 @@ jobs:
           ref: ${{ inputs.qmk_ref || 'master' }}
           submodules: recursive
 
+      - name: Install QMK CLI dependencies
+        run: |
+          qmk_tool_dir="$(uv tool dir)/qmk"
+          . "$qmk_tool_dir/bin/activate"
+          uv pip install -r qmk_firmware/requirements.txt
+
       - name: Configure QMK CLI
         run: |
           qmk config userspace_compile.parallel=$(nproc 2>/dev/null || sysctl -n hw.ncpu 2>/dev/null || getconf _NPROCESSORS_ONLN 2>/dev/null)
