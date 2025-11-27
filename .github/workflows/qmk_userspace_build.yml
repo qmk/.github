@@ -26,7 +26,7 @@ jobs:
   build:
     name: Build Userspace Firmware
     runs-on: ubuntu-latest
-    container: qmkfm/base_container
+    container: ghcr.io/qmk/qmk_cli:latest
 
     steps:
       - name: Checkout Userspace
@@ -51,10 +51,11 @@ jobs:
           ref: ${{ inputs.qmk_ref || 'master' }}
           submodules: recursive
 
-      - name: Install QMK CLI
+      - name: Install QMK CLI dependencies
         run: |
-          python3 -m pip install --upgrade qmk
-          python3 -m pip install -r qmk_firmware/requirements.txt
+          qmk_tool_dir="$(uv tool dir)/qmk"
+          . "$qmk_tool_dir/bin/activate"
+          uv pip install -r qmk_firmware/requirements.txt
 
       - name: Configure QMK CLI
         run: |
