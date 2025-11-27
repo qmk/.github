@@ -53,9 +53,9 @@ jobs:
 
       - name: Install QMK CLI dependencies
         run: |
-          qmk_tool_dir="$(uv tool dir)/qmk"
-          . "$qmk_tool_dir/bin/activate"
-          uv pip install -r qmk_firmware/requirements.txt
+          echo '$PATH'
+          echo $PATH | tr ':' '\n' | sed -e 's/^/ - /g'
+          pip install -r qmk_firmware/requirements.txt
 
       - name: Configure QMK CLI
         run: |
