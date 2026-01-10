@@ -19,6 +19,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-tags: true
+
       - name: Download binaries
         if: always() && !cancelled()
         uses: actions/download-artifact@v4
