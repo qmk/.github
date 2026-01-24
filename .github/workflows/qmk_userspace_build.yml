@@ -74,7 +74,10 @@ jobs:
 
       - name: Build
         run: |
-          qmk userspace-compile -e DUMP_CI_METADATA=yes || touch .failed
+          if qmk userspace-compile --help | grep -q "print-failures"; then
+              EXTRA_ARGS="-p"
+          fi
+          qmk userspace-compile -e DUMP_CI_METADATA=yes $EXTRA_ARGS || touch .failed
           # Generate the step summary markdown
           ./qmk_firmware/util/ci/generate_failure_markdown.sh > $GITHUB_STEP_SUMMARY || true
           # Truncate to a maximum of 1MB to deal with GitHub workflow limit
