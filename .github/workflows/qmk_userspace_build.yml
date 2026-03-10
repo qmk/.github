@@ -30,7 +30,7 @@ jobs:
 
     steps:
       - name: Checkout Userspace
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           token: ${{ github.token }}
           submodules: recursive
@@ -42,7 +42,7 @@ jobs:
           files: qmk_firmware
 
       - name: Checkout QMK Firmware
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         if: steps.check_files.outputs.files_exists == 'false'
         with:
           token: ${{ github.token }}
@@ -86,7 +86,7 @@ jobs:
           [ ! -f .failed ] || exit 1
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         if: always() && !cancelled()
         continue-on-error: true
         with:
