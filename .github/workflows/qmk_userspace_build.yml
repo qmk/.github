@@ -35,15 +35,9 @@ jobs:
           token: ${{ github.token }}
           submodules: recursive
 
-      - name: Check if qmk_firmware exists
-        id: check_files
-        uses: andstor/file-existence-action@v3
-        with:
-          files: qmk_firmware
-
       - name: Checkout QMK Firmware
         uses: actions/checkout@v6
-        if: steps.check_files.outputs.files_exists == 'false'
+        if: ${{ hashFiles('qmk_firmware/requirements.txt') == '' }}
         with:
           token: ${{ github.token }}
           path: qmk_firmware
