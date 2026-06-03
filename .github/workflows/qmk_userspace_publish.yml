@@ -35,7 +35,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
 
       - name: Generate Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: always() && !cancelled()
         with:
           token: ${{ github.token }}
